@@ -6,7 +6,7 @@ import passwordUtils from "../utils/password-utils";
 
 export async function usersRoutes(app: FastifyInstance) {
    
-    app.post(`/users`, async(request, response)=>{
+    app.post(`/`, async(request, response)=>{
     
 
         const createUserBodySchema = z.object({
@@ -27,7 +27,7 @@ export async function usersRoutes(app: FastifyInstance) {
             password: passwordEncripted
         })
     
-        
+    
         
         return response.status(201).send();
     });
