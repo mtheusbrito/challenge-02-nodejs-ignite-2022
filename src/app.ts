@@ -2,6 +2,7 @@ import fastify from 'fastify'
 import cookie from '@fastify/cookie'
 import { usersRoutes } from './routes/users'
 import { accountRoutes } from './routes/account'
+import { snakcsRoutes } from './routes/snakcs'
 
 export const app = fastify()
 
@@ -11,5 +12,7 @@ app.get(`/`, async ()=>{
 
  return {message: 'It`s works!'}
 })
+
 app.register(usersRoutes, {prefix: 'users'})
 app.register(accountRoutes, {prefix: 'account'})
+app.register(snakcsRoutes, { prefix: 'snakcs'})

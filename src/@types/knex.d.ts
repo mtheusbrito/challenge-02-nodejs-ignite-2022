@@ -8,6 +8,15 @@ declare module 'knex/types/tables'{
             username: string
             password: string
 
+        },
+        snakcs: {
+            id: string
+            name: string
+            description: string 
+            diet:boolean
+            created_at: string
+            user_id: string
         }
+        
     }
 }
