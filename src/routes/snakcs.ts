@@ -34,4 +34,25 @@ export async function snakcsRoutes(app: FastifyInstance) {
 
     return reply.status(201).send();
   });
+
+  app.delete('/:id',async(request, reply)=> {
+    const { id : idSnakc} = request.params as { id : String};
+    const { id : userId} = request.user;
+
+    const snakc = await knex('snakcs').where('id', idSnakc).first()
+    
+    if(!snakc){
+        return reply.status(400).send({message: 'Snakc not found.'});
+    }
+
+    if (snakc.user_id !== userId){
+    
+        return reply.status(403).send({message: 'Unauthorized.'})
+    }
+
+    await knex('snakcs').delete().where('id', idSnakc);
+
+    return reply.status(200).send()
+
+})
 }

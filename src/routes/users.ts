@@ -1,12 +1,13 @@
 import { z } from "zod";
 import { FastifyInstance } from "fastify";
-import  {randomUUID, createHash } from "crypto";
+import  {randomUUID } from "crypto";
 import { knex } from "../database";
 import passwordUtils from "../utils/password-utils";
 
+
 export async function usersRoutes(app: FastifyInstance) {
    
-    app.post(`/`, async(request, response)=>{
+    app.post(`/`, async(request, reply)=>{
     
 
         const createUserBodySchema = z.object({
@@ -29,7 +30,9 @@ export async function usersRoutes(app: FastifyInstance) {
     
     
         
-        return response.status(201).send();
-    });
+        return reply.status(201).send();
+    })
+
+    
 }
 
