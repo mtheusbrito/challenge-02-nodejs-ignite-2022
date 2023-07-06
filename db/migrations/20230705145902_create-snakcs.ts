@@ -6,7 +6,9 @@ export async function up(knex: Knex): Promise<void> {
         table.uuid("id").primary();
         table.text('name').notNullable
         table.text('description').unique().notNullable();
-        table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable()
+        table.date('date').notNullable()
+        table.time('time').notNullable()
+        table.boolean('diet').defaultTo(false)
         table.uuid('user_id').unsigned().index().references('id').inTable('users').onDelete('SET NULL')
       });
 }
