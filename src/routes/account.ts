@@ -10,7 +10,29 @@ const {expires_in_token, secret_token } = auth
 export async function accountRoutes(app: FastifyInstance) {
 
     
-    app.post('/login', async (request, response) => {
+    app.post('/login', {
+        schema: {
+          description: "Login user",
+          tags: ["Auth"],
+          summary: "authenticate user",
+  
+          body: {
+            type: "object",
+            properties: {
+              username: { type: "string" },
+              password: { type: "string" },
+            },
+          },
+          response: {
+            200: {
+                type: 'object',
+                properties: {
+                    accessToken: { type: 'string' }
+                }
+            },
+          },
+        },
+      }, async (request, response) => {
         const createLoginBodySchema = z.object({
             username: z.string(),
             password: z.string(),

@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "@fastify/cookie": "^8.3.0",
+    "@fastify/swagger": "^8.8.0",
+    "@fastify/swagger-ui": "^1.9.2",
     "dotenv": "^16.3.1",
     "fastify": "^4.19.2",
     "jsonwebtoken": "^9.0.0",
